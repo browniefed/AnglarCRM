@@ -1,13 +1,22 @@
+module.exports = function(app,Schema)
+{
+	var Schema = Schema,
+	passport = require('passport');
 
-/*
- * GET home page.
- */
+	function ensureAuthenticated(req, res, next) {
+	  if (req.isAuthenticated()) { return next(); }
+	 	res.redirect('/login')
+	}
 
-exports.index = function(req, res){
-  res.render('index');
-};
+	app.get('/', ensureAuthenticated, function(req, res)
+	{
+		res.render('index');
+	});
 
-exports.partials = function (req, res) {
-  var name = req.params.name;
-  res.render('partials/' + name);
-};
+	app.get('/partials/:name', ensureAuthenticated, function (req, res)
+	{
+		var name = req.params.name;
+		res.render('partials/' + name);
+	});
+
+}

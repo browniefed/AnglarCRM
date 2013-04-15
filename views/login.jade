@@ -1,0 +1,15 @@
+extends layout
+block body
+	div(class="l-login centered")
+		h2(class="title login-header") Your Company Here
+		div(class="box login-box")
+			form(action='/login',method='post')
+				div(class="input-wrap")
+					label(for='username') Username:
+					input(name='username',type="text")
+				div(class="input-wrap")
+					label(for='password') Password:
+					input(name='password',type='password')
+
+				input(name='submit', value='Login', type='submit')
+		p(class="login-footer") Powered by AnglarCRM

@@ -1,0 +1,344 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/*
+GLOBAL COLORS
+ */
+/*
+NAV COLORS
+ */
+/*
+GLOBAL
+ */
+/* line 41, ../sass/screen.scss */
+body {
+  font-family: helvetica;
+  font-size: 16px;
+  color: #333333;
+}
+
+/*
+NAV
+ */
+/* line 51, ../sass/screen.scss */
+.l-nav {
+  display: inline-block;
+}
+
+/* line 54, ../sass/screen.scss */
+.l-nav .nav-active {
+  color: #e04729;
+}
+
+/*
+	LEFT NAV
+ */
+/* line 62, ../sass/screen.scss */
+.l-nav-left {
+  float: left;
+  width: 200px;
+}
+/* line 67, ../sass/screen.scss */
+.l-nav-left > ul {
+  background-color: #4c5457;
+  width: 100%;
+  display: inline-block;
+  border-right: 1px solid #cccccc;
+}
+/* line 73, ../sass/screen.scss */
+.l-nav-left ul > li {
+  float: left;
+  line-height: 1;
+  clear: both;
+  width: 100%;
+}
+/* line 80, ../sass/screen.scss */
+.l-nav-left > ul > li a {
+  border-bottom: 1px solid #cccccc;
+}
+/* line 83, ../sass/screen.scss */
+.l-nav-left > ul > li a:hover {
+  color: #e04729;
+}
+/* line 86, ../sass/screen.scss */
+.l-nav-left ul > li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 15px 8px;
+  outline: medium none;
+}
+/* line 94, ../sass/screen.scss */
+.l-nav-left li ul.tabs {
+  background-color: #5e6168;
+  float: left;
+  width: 100%;
+}
+/* line 100, ../sass/screen.scss */
+.l-nav-left li ul.tabs li {
+  clear: both;
+}
+/* line 104, ../sass/screen.scss */
+.l-nav-left ul.tabs li a {
+  padding: 10px 30px;
+  color: white;
+}
+/* line 108, ../sass/screen.scss */
+.l-nav-left ul.tabs li a:hover {
+  color: #e04729;
+}
+/* line 112, ../sass/screen.scss */
+.l-nav-left .icon-caret-down {
+  display: none;
+}
+
+/*
+TOP NAV
+ */
+/* line 122, ../sass/screen.scss */
+.l-nav-top {
+  background: #ccc;
+  display: inline-block;
+  border-bottom: 1px solid #cccccc;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+/* line 130, ../sass/screen.scss */
+.l-nav-top > ul {
+  background-color: #4c5457;
+  width: 100%;
+}
+/* line 135, ../sass/screen.scss */
+.l-nav-top ul > li {
+  background-color: #4c5457;
+  float: left;
+  line-height: 1;
+  position: relative;
+}
+/* line 143, ../sass/screen.scss */
+.l-nav-top ul > li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 10px 30px 10px 30px;
+  outline: medium none;
+}
+/* line 150, ../sass/screen.scss */
+.l-nav-top > ul > li a:hover {
+  color: #e04729;
+}
+/* line 154, ../sass/screen.scss */
+.l-nav-top li:hover ul.tabs {
+  display: block;
+}
+/* line 157, ../sass/screen.scss */
+.l-nav-top li ul.tabs {
+  display: none;
+  float: left;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+  -webkit-box-shadow: -1px 5px 4px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: -1px 5px 4px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: -1px 5px 4px 1px rgba(0, 0, 0, 0.25);
+}
+/* line 167, ../sass/screen.scss */
+.l-nav-top li ul.tabs li {
+  background-color: #5e6168;
+  clear: left;
+  margin: 0;
+  width: 100%;
+}
+/* line 174, ../sass/screen.scss */
+.l-nav-top ul.tabs li a {
+  padding: 10px 15px 10px 30px;
+  color: white;
+  width: 100%;
+}
+/* line 179, ../sass/screen.scss */
+.l-nav-top ul.tabs li a:hover {
+  color: #e04729;
+}
+/* line 182, ../sass/screen.scss */
+.l-nav-top .nav-user {
+  float: right;
+}
+
+/*
+GLOBAL LAYOUT
+ */
+/* line 191, ../sass/screen.scss */
+.box {
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25) 1px 1px 4px;
+  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25) 1px 1px 4px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25) 1px 1px 4px;
+}
+
+/* line 195, ../sass/screen.scss */
+.content {
+  float: left;
+  margin: 10px 0 0 10px;
+}
+
+/* line 199, ../sass/screen.scss */
+.centered {
+  margin: 0 auto;
+}
+
+/*
+GLOBAL DEFAULTS
+ */
+/* line 206, ../sass/screen.scss */
+h2.title {
+  font-size: 1.5em;
+}
+
+/*
+LOGIN BOX
+ */
+/* line 213, ../sass/screen.scss */
+.l-login {
+  max-width: 400px;
+  width: 100%;
+  min-width: 250px;
+  margin-top: 200px;
+}
+/* line 220, ../sass/screen.scss */
+.l-login .login-header {
+  margin-bottom: 10px;
+}
+/* line 223, ../sass/screen.scss */
+.l-login .login-box {
+  -webkit-box-shadow: 1px 1px 70px 40px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 1px 1px 70px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 1px 70px 40px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  width: 100%;
+  min-width: 250px;
+  background: #FFF;
+  border: 1px solid #eeeeee;
+  display: inline-block;
+  padding: 20px;
+}
+/* line 233, ../sass/screen.scss */
+.l-login .login-box input {
+  float: left;
+  clear: both;
+  width: 100%;
+  padding: 10px 5px;
+  margin: 5px 0 0 0;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 242, ../sass/screen.scss */
+.l-login .login-box input[type=text], .l-login .login-box input[type=password] {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #eeeeee;
+  background: #FFF;
+}
+/* line 248, ../sass/screen.scss */
+.l-login input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+/* line 251, ../sass/screen.scss */
+.l-login .login-box input[type=text]:focus, .l-login .login-box input[type=password]:focus {
+  -webkit-box-shadow: 0px 0px 1px 3px rgba(201, 220, 252, 0.25);
+  -moz-box-shadow: 0px 0px 1px 3px rgba(201, 220, 252, 0.25);
+  box-shadow: 0px 0px 1px 3px rgba(201, 220, 252, 0.25);
+}
+/* line 255, ../sass/screen.scss */
+.l-login .login-box input[type=submit] {
+  border: none;
+  cursor: pointer;
+}
+/* line 259, ../sass/screen.scss */
+.l-login .login-box label {
+  float: left;
+  clear: both;
+  font-size: .7em;
+}
+/* line 265, ../sass/screen.scss */
+.l-login .login-box .input-wrap {
+  margin: 10px 0;
+  display: inline-block;
+  width: 100%;
+}
+/* line 270, ../sass/screen.scss */
+.l-login .login-footer {
+  margin-top: 10px;
+  font-size: .8em;
+}

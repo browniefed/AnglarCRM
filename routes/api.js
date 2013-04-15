@@ -1,78 +1,92 @@
-/*
- * Serve JSON to our AngularJS client
- */
+module.exports = function(app, Schema) {
+  
+  var Schema = Schema;
 
-// For a real app, you'd make database requests here.
-// For this example, "data" acts like an in-memory "database"
-var data = {
-  "posts": [
-    {
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
-    {
-      "title": "Sed egestas",
-      "text": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus."
+    function ensureAuthenticated(req, res, next) {
+      if (req.isAuthenticated()) { return next(); }
+      res.redirect('/login')
     }
-  ]
-};
-
-// GET
-
-exports.posts = function (req, res) {
-  var posts = [];
-  data.posts.forEach(function (post, i) {
-    posts.push({
-      id: i,
-      title: post.title,
-      text: post.text.substr(0, 50) + '...'
+  //GET ALL POSTS
+  app.get('/api/posts', ensureAuthenticated,function (req, res)
+  {
+    Schema.Post.find({}, function(err, posts){
+      var data = [];
+      posts.forEach(function(post, i)
+      {
+        data.push({
+          id:post._id,
+          title: post.title,
+          text: post.text
+        });
+      })
+      res.json({posts: data});
     });
   });
-  res.json({
-    posts: posts
-  });
-};
 
-exports.post = function (req, res) {
-  var id = req.params.id;
-  if (id >= 0 && id < data.posts.length) {
-    res.json({
-      post: data.posts[id]
+  //GET SINGLE POST
+  app.get('/api/post/:id', ensureAuthenticated, function (req, res)
+  {
+
+    Schema.Post.findOne({'_id': Schema.db.BSON.ObjectID.fromString(req.params.id)}, function (err, post)
+    {
+      if (err) {
+        res.json(false);
+      }
+      res.json({post:post});
     });
-  } else {
-    res.json(false);
-  }
-};
+  });
 
-// POST
+  app.post('/api/post', ensureAuthenticated, function(req, res)
+  {
+    var post = new Schema.Post({title: req.body.title, text: req.body.text});
+    post.save();
+    res.json(req.body);
+  })
 
-exports.addPost = function (req, res) {
-  data.posts.push(req.body);
-  res.json(req.body);
-};
+  //EDIT THE POST
+  app.put('/api/post/:id', ensureAuthenticated, function(req, res)
+  {
+    var id = req.params.id;
+    Schema.Post.findOne({'_id': Schema.db.BSON.ObjectID.fromString(id)}, function( err, post)
+    {
+      if (err)
+      {
+        res.json(false);
+      }
+      post.modified = new Date();
+      post.title = req.body.title;
+      post.text = req.body.text;
+      post.save(function(err)
+      {
+        if (err)
+        {
+          res.json(false);
+        }
+        else
+        {
+          res.json(true);
+        }
+      });
+    });
+  });
+  //DELETE THE POST
+  app.delete('/api/post/:id', ensureAuthenticated, function(req, res){
+    var id = req.params.id;
+    if (id)
+    {
+      Schema.Post.remove({'_id': Schema.db.BSON.ObjectID.fromString(id)}, function(err)
+      {
+        if (err)
+        {
+          res.json(false);
+        }
+        else
+        {
+          res.json(true);
+        }
+      });
+    }
+  });
+  
 
-// PUT
-
-exports.editPost = function (req, res) {
-  var id = req.params.id;
-
-  if (id >= 0 && id < data.posts.length) {
-    data.posts[id] = req.body;
-    res.json(true);
-  } else {
-    res.json(false);
-  }
-};
-
-// DELETE
-
-exports.deletePost = function (req, res) {
-  var id = req.params.id;
-
-  if (id >= 0 && id < data.posts.length) {
-    data.posts.splice(id, 1);
-    res.json(true);
-  } else {
-    res.json(false);
-  }
-};
+}

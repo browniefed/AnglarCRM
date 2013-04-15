@@ -1,17 +1,54 @@
 extends layout
 
 block body
-  div
-    h2 My Blog
+  nav(class="l-nav l-nav-left", id="nav")
     ul
-      li
-        a(href='/') Home
-      li
-        a(href='/addPost') Add a new post
+      li(class="nav-user")
+        p(ng-controller="userData")
+          a(href="/Users/EditProfile") <i class="icon-user icon"></i> {{username}} <i class="icon-caret-down"></i>
+        ul(class="tabs")
+          li(class="nav-edit-profile")
+            a(href="/Uses/EditProfile") <i class="icon-edit"></i> Edit Profile
+          li(class="nav-logout")
+            a(href="/logout",ng-click="logout()") <i class="icon-off"></i> Logout
+      li(class="nav-home")
+        a(href="/index",class="nav-active") <i class="icon-home"></i> Home
+      li(class="nav-customers")
+        a(href="/Customers") <i class="icon-group"></i> Customers <i class="icon-caret-down"></i>
+        ul(class="tabs")
+          li(class="nav-customers-index")
+            a(href="/Customers/ViewAll") <i class="icon-list"></i> View All
+          li(class="nav-customers-add")
+            a(href="/Customers/AddNew")  <i class="icon-plus-sign"></i> Add New
+      li(class="nav-invoices")
+        a(href="/Invoices") <i class="icon-money"></i> Invoices <i class="icon-caret-down"></i>
+        ul(class="tabs")
+          li(class="nav-invoices-index")
+            a(href="/Invoices/ViewAll") <i class="icon-list"></i> View All
+          li(class="nav-invoices-add")
+            a(href="/Invoices/AddNew")  <i class="icon-plus-sign"></i> Add New
+      li(class="nav-franchises")
+        a(href="/Franchise") <i class="icon-map-marker"></i> Franchises <i class="icon-caret-down"></i>
+        ul(class="tabs")
+          li(class="nav-franchises-index")
+            a(href="/Franchise/ViewAll") <i class="icon-list"></i> View All
+          li(class="nav-franchises-add")
+            a(href="/Franchise/AddNew")  <i class="icon-plus-sign"></i> Add New
+      li(class="nav-settings")
+        a(href="/Settings") <i class="icon-cogs"></i> Settings <i class="icon-caret-down"></i>
+        ul(class="tabs")
+          li(class="nav-settings-users")
+            a(href="/Users") <i class="icon-list"></i> Users
+          li(class="nav-settings-general")
+            a(href="/General") <i class="icon-cog"></i> General
+          li(class="nav-settings-lineitems")
+            a(href="/LineItems") <i class="icon-reorder"></i> Line Items
 
-    div(ng-view)
+  div
+    div(ng-view, class="content")
 
   script(src='js/lib/angular/angular.js')
+  script(src='js/responsive-nav.min.js')
   script(src='js/app.js')
   script(src='js/services.js')
   script(src='js/controllers.js')

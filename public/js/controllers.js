@@ -9,6 +9,13 @@ function IndexCtrl($scope, $http) {
     });
 }
 
+function IndexUserCtrl($scope, $http)
+{
+  $http.get('/users').success(function(data, status, headers, config){
+    $scope.users = data.users;
+  });
+}
+
 function AddPostCtrl($scope, $http, $location) {
   $scope.form = {};
   $scope.submitPost = function () {
@@ -19,11 +26,28 @@ function AddPostCtrl($scope, $http, $location) {
   };
 }
 
+function AddUserCtrl($scope, $http, $location)
+{
+  $scope.form = {};
+  $scope.submitUser = function() {
+    $http.post('/users/addUser', $scope.form).success(function(data) {
+      $location.path('/usersIndex');
+    });
+  }
+}
+
 function ReadPostCtrl($scope, $http, $routeParams) {
   $http.get('/api/post/' + $routeParams.id).
     success(function(data) {
       $scope.post = data.post;
     });
+}
+
+function ViewUserCtrl($scope, $http, $routeParams)
+{
+  $http.get('/users/viewUser/' + $routeParams.id).success(function(data) {
+    $scope.user = data.user;
+  });
 }
 
 function EditPostCtrl($scope, $http, $location, $routeParams) {
@@ -39,6 +63,20 @@ function EditPostCtrl($scope, $http, $location, $routeParams) {
         $location.url('/readPost/' + $routeParams.id);
       });
   };
+}
+
+function EditUserCtrl($scope, $http, $location, $routeParams)
+{
+  $scope.form = {};
+  $http.get('/users/viewUser/' + $routeParams.id).success(function(data) {
+    $scope.form = data.user;
+  });
+
+  $scope.editUser = function() {
+    $http.put('/users/editUser/' + $routeParams.id, $scope.form).success(function(data){
+      $location.url('/viewUser/' + $routeParams.id);
+    });
+  }
 }
 
 function DeletePostCtrl($scope, $http, $location, $routeParams) {
@@ -57,4 +95,29 @@ function DeletePostCtrl($scope, $http, $location, $routeParams) {
   $scope.home = function () {
     $location.url('/');
   };
+}
+
+function DeleteUserCtrl($scope, $http, $location, $routeParams)
+{
+  $http.get('/users/viewUser/' + $routeParams.id).success(function(data) {
+    $scope.user = data.user;
+  });
+  $scope.deleteUser = function() {
+    $http.delete('/users/deleteUser/' + $routeParams.id).success(function(data){
+      $location.url('/usersIndex');
+    })
+  };
+
+  $scope.userHome = function() {
+    $location.url('/usersIndex');
+  }
+}
+
+
+
+function userData($scope, $http)
+{
+  $http.get('/user').success(function(data) {
+    $scope.username = data.user.username;
+  });
 }

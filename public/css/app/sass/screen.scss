@@ -1,0 +1,274 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/layout/grid-background";
+@import "compass/css3";
+@import "compass/utilities";
+@import "compass/typography";
+
+/*
+GLOBAL COLORS
+ */
+
+$dark-grey: #333;
+$light-grey: #eee;
+$border-color:#ccc;
+
+/*
+NAV COLORS
+ */
+
+$nav-top-color: #4C5457;
+$nav-bottom-color: #5E6168;
+$nav-border-color: #CCC;
+$nav-top-text-color: #FFF;
+$nav-top-text-color-hover: #e04729;
+$nav-bottom-text-color: #FFF;
+$nav-bottom-text-color-hover: #e04729;
+$nav-color-active: #e04729;
+
+@mixin default_fonts {
+	font-family: helvetica;
+}
+
+/*
+GLOBAL
+ */
+
+body {
+	@include default_fonts;
+	font-size:16px;
+	color: $dark-grey;
+
+}
+/*
+NAV
+ */
+.l-nav 
+{
+	display:inline-block;
+}
+.l-nav .nav-active {
+	color: $nav-color-active;
+}
+/*
+	LEFT NAV
+ */
+
+.l-nav-left 
+{
+	float:left;
+	width:200px;
+
+	> ul
+	{
+		background-color:$nav-top-color;
+		width: 100%;
+		display:inline-block;
+		border-right:1px solid $nav-border-color;
+	}
+	ul > li {
+		float:left;
+		line-height:1;
+		clear:both;
+		width:100%;
+	}
+	> ul > li a 
+	{
+		border-bottom:1px solid $nav-border-color;
+	}
+	> ul > li a:hover {
+		color: $nav-top-text-color-hover;
+	}
+	ul > li a {
+		text-decoration:none;
+		color:$nav-top-text-color;
+		display:block;
+		padding:15px 8px;
+		outline:medium none;
+	}
+
+	li ul.tabs {
+		background-color:$nav-bottom-color;
+		float:left;
+		width:100%;
+	}
+
+	li ul.tabs li {
+		clear:both;
+
+	}
+	ul.tabs li a {
+		padding:10px 30px;
+		color: $nav-bottom-text-color;
+	}
+	ul.tabs li a:hover {
+		color: $nav-bottom-text-color-hover;
+	}
+
+	.icon-caret-down {
+		display:none;
+	}
+}
+
+/*
+TOP NAV
+ */
+
+.l-nav-top
+{
+	background: #ccc;
+	display:inline-block;
+	border-bottom:1px solid $nav-border-color;
+	@include single-box-shadow(rgba(0,0,0,.25));
+	width:100%;
+
+	> ul
+	{
+		background-color:$nav-top-color;
+		width: 100%;
+	}
+	ul > li
+	{
+		background-color:$nav-top-color;
+		float:left;
+		line-height:1;
+		position: relative;
+	}
+
+	ul > li a
+	{
+		text-decoration:none;
+		color:$nav-top-text-color;
+		display:block;
+		padding:10px 30px 10px 30px;
+		outline: medium none;
+	}
+	> ul > li a:hover {
+		color: $nav-top-text-color-hover;
+	}
+
+	li:hover ul.tabs {
+		display:block;
+	}
+	li ul.tabs {
+		display:none;
+		float:left;
+		position:absolute;
+		width:100%;
+		z-index:999;
+		@include single-box-shadow(rgba(0,0,0,.25), -1px, 5px, 4px, 1px );
+
+	}
+
+	li ul.tabs li {
+		background-color:$nav-bottom-color;
+		clear:left;
+		margin:0;
+		width:100%;
+	}
+
+	ul.tabs li a {
+		padding:10px 15px 10px 30px;
+		color: $nav-bottom-text-color;
+		width:100%;
+	}
+	ul.tabs li a:hover {
+		color: $nav-bottom-text-color-hover;
+	}
+	.nav-user {
+		float:right;
+	}
+}
+
+
+/*
+GLOBAL LAYOUT
+ */
+.box {
+	@include single-box-shadow(rgba(0,0,0,.25) 1px 1px 4px);
+}
+
+.content {
+	float:left;
+	margin: 10px 0 0 10px;
+}
+.centered {
+	margin: 0 auto;	
+}
+
+/*
+GLOBAL DEFAULTS
+ */
+h2.title {
+	font-size: 1.5em;
+}
+
+/*
+LOGIN BOX
+ */
+.l-login {
+	
+	max-width:400px;
+	width:100%;
+	min-width:250px;
+	margin-top:200px;
+
+	.login-header {
+		margin-bottom:10px;
+	}
+	.login-box {
+		@include single-box-shadow(rgba(0,0,0,.05), 1px, 1px, 70px, 40px);
+		max-width:400px;
+		width:100%;
+		min-width:250px;
+		background:#FFF;
+		border:1px solid $light-grey;
+		display:inline-block;
+		padding:20px;
+	}
+	.login-box input {
+		float:left;
+		clear:both;
+		width:100%;
+		padding:10px 5px;
+		margin:5px 0 0 0;
+		outline:none;
+		@include box-sizing(border-box);
+	}
+	.login-box input[type=text],.login-box input[type=password] {
+		@include border-radius(5px);
+		border:1px solid $light-grey;
+		background:#FFF;
+	}
+
+	input:-webkit-autofill:focus {
+	    -webkit-box-shadow: 0 0 0px 1000px white inset;
+	}
+	.login-box input[type=text]:focus, .login-box input[type=password]:focus{
+		@include single-box-shadow(rgba(201,220,252,.25), 0px, 0px, 1px, 3px);
+	}
+	.login-box input[type=submit]
+	{
+		border:none;
+		cursor:pointer;
+	}
+	.login-box label {
+		float:left;
+		clear:both;
+		font-size:.7em;
+	}
+	.login-box .input-wrap
+	{
+		margin:10px 0;
+		display:inline-block;
+		width:100%;
+	}
+	.login-footer {
+		margin-top: 10px;
+		font-size:.8em;
+	}
+}
